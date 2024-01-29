@@ -5,6 +5,7 @@ Get your on personal assitant runing locally with ollama on llama2
 
 To-Do:
 
+- [ ] Prepare instruct dataset(WIP)
 - [ ] Fine-tune llama2-7b for a costum model `Llama-2-7b-chat-jarvis"`(WIP)
 - [ ] Build a proper voice clone of jarvis(In progress): currently having difficulties finding clean voice samples of jarvis on the internet, so working with what i have, i guess won't be perfect.
 - [ ] Integrate with a fine-tuned version of any open source LLM out there, like Llama 2 or Mistral AI etc
