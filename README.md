@@ -4,7 +4,7 @@ The J.A.R.V.I.S Large Language Model, 100% offline
 A fine-tune of LLama2 7b on Jarvis dataset
 
 ## Content:
-- Dataset [here](https://huggingface.co/datasets/fotiecodes/jarvis-llama2-dataset) | dataset is being created progrsively
+- Dataset [here](https://huggingface.co/datasets/fotiecodes/jarvis-llama2-dataset) | dataset is being created progresively
 - Model: [here](https://huggingface.co/fotiecodes/Llama-2-7b-chat-jarvis) | Updated every week or so
 
 Jarvis is bing built with privacy in mind, everything runs locally. In the main time it works with local LLama2 7b with ollama until the fine-tuned mondel is ready to be used.
