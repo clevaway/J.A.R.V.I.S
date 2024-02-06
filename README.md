@@ -1,7 +1,7 @@
 # Jarvis
-Just a Rather Very Intelligent System running on llama2 100% offline
+The J.A.R.V.I.S Large Language Model, 100% offline
 
-Get your on personal assitant runing locally with ollama on llama2
+A fine-tune of LLama2 7b on Jarvis dataset
 
 ## Content:
 - Dataset [here](https://huggingface.co/datasets/fotiecodes/jarvis-llama2-dataset) | dataset is being created progrsively
