@@ -1,7 +1,7 @@
 # Jarvis
 The J.A.R.V.I.S Large Language Model, 100% offline
 
-A fine-tune of LLama2 7b on Jarvis dataset
+We have use custom jarvis dataset and various other open datasets on the internet of jarvis's dialog with stark to fine-tune on top of Llama2 7b
 
 ## Content:
 - Dataset [here](https://huggingface.co/datasets/fotiecodes/jarvis-llama2-dataset) | dataset is being created progresively
