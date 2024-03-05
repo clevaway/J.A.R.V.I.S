@@ -1,8 +1,10 @@
 from modules.speech_to_text import SpeechToText
 from modules.text_to_speech import TextToSpeech
 from modules.ollama_nlp import OllamaNLP
+from modules.introductions import run_introduction
 # from modules.command_executor import CommandExecutor
 # from config.config import Config
+from moviepy.editor import VideoFileClip
 
 
 def main():
@@ -14,13 +16,15 @@ def main():
 
     # Load configuration
     # config = Config()
+    # run intro
+    run_introduction()
 
     while True:
         # Listen for user input
         user_input = speech_to_text.listen()
 
         # Process user input using NLP
-        processed_input = ollam_nlp.generate_text("llama2", user_input)
+        processed_input = ollam_nlp.generate_text("llama2:latest", user_input)
 
         # # Execute command based on processed input
         # response = command_executor.execute(processed_input)
