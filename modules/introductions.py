@@ -26,7 +26,7 @@ def play_video():
 
 def speak_introduction():
     # introductions
-    text_to_speech.speak("Allow me to introduce myself. I am Jarvis, a virtual artificial intelligence assistant. Importing all preferences from home interface. calibrating all systems. Please stand by. systems are now fully operational.")
+    text_to_speech.speak("Allow me to introduce myself. I am Jarvis, a virtual artificial intelligence assistant. Importing all preferences from home interface. calibrating all systems. Please stand by. systems are now fully operational. Welcome back sir.")
 
 
 def run_introduction():

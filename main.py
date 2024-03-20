@@ -24,7 +24,7 @@ def main():
         user_input = speech_to_text.listen()
 
         # Process user input using NLP
-        processed_input = ollam_nlp.generate_text("llama2:latest", user_input)
+        processed_input = ollam_nlp.generate_text("jarvis:latest", user_input)
 
         # # Execute command based on processed input
         # response = command_executor.execute(processed_input)

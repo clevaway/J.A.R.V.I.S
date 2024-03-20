@@ -1,1 +1,2 @@
 FROM ./ollama/quantized.bin
+TEMPLATE "<s>[INST] {{ .Prompt }} [/INST]"
