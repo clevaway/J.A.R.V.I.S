@@ -21,7 +21,7 @@ I. You will need Ollama to download and install the model for use locally.
 2. Run the command:
 
   ```bash
-    ollama run fotiecodes/jarvis
+ollama run fotiecodes/jarvis
   ```
 
   This will install the model [jarvis](https://ollama.com/fotiecodes/jarvis) model locally.
