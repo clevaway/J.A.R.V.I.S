@@ -2,3 +2,4 @@ __pycache__
 .env
 jarvis-7b-v0.1.gguf
 jarvis-hf
+ollama/*

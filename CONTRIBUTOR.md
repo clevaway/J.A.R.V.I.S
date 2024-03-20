@@ -26,50 +26,61 @@ You can contribute in several ways:
 - Improving the dataset
 
 ## Deployment
+
 We use [llama.cpp](https://github.com/ggerganov/llama.cpp) to convert and quantize the model. The deployment of the model is done using [Ollama](https://github.com/ollama/ollama). If you make changes that affect the model, you may need to quantize it and run it locally before pushing you code. Please refer to the Ollama documentation for more information.
 
 ## Setup local
+
 1. Clone the this repo
 2. Make sure you have the python dep needed, we useing `pythin 3.10.13` for this project
 3. That's it, you are in.
 
 ## Model convertion and quantization
-  This repo already comes with everything needed for this so you won't have to clone any external repo. After cloning this repo you will then fetch its llama.cpp submodule:
+
+First, clone the ollama/ollama repo:
+
+```bash
+git clone https://github.com/ollama/ollama.git
+cd ollama
+```
+
+after cloning this repo you will then fetch its llama.cpp submodule:
+
   ```bash
 git submodule init
 git submodule update llm/llama.cpp
   ```
+
   Next, install the Python dependencies:
+
   ```bash
 python3 -m venv llm/llama.cpp/.venv
 source llm/llama.cpp/.venv/bin/activate
 pip install -r llm/llama.cpp/requirements.txt
 
   ```
+
   you can use whatever python version manager you want, we use anaconda.
 
-  Then build the quantize tool:
+  then build the quantize tool:
+
   ```bash
   make -C llm/llama.cpp quantize
   ```
-  ### Convert the model
+
+### Convert the model
+>
 > Note: some model architectures require using specific convert scripts. For example, Qwen models require running `convert-hf-to-gguf.py` instead of `convert.py`
 
-```
+```bash
 python llm/llama.cpp/convert.py ./model --outtype f16 --outfile converted.bin
 ```
 
 ### Quantize the model
 
-```
+```bash
 llm/llama.cpp/quantize converted.bin quantized.bin q4_0
 ```
-
- 
-
-
-
-
 
 ## Questions
 
