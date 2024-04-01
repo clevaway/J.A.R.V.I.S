@@ -15,7 +15,7 @@ Jarvis is bing built with privacy in mind, everything runs locally. This fine-tu
 
 - [x] Jarvis can tell you the current date and time just ask:) `Try: What time is it?  what is the date of today?`
 - [x] Open your default browser and search for something `Try: hey jarvis, help me search for the best african dish out there`
-- [ ] play youtube video by title `Try: hey jarvis, play Girls like you by Maroon 5 on youtube`
+- [x] play youtube video by title `Try: hey jarvis, play Girls like you by Maroon 5 on youtube`
 - [ ] Search on wikipedia
 - [ ] Send emails from contacts
 
