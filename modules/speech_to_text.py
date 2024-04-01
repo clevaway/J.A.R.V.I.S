@@ -16,12 +16,12 @@ class SpeechToText:
 
                 # Convert audio to text
                 text = self.recognizer.recognize_google(audio)
-                print("You said:", text)
-                return text
+                print("You said:", text.lower())
+                return text.lower()
 
             except sr.UnknownValueError:
                 print("Sorry, could not understand audio.")
-                return ""
+                return "Hey there"
             except sr.RequestError as e:
                 print(f"Error connecting to Google API: {e}")
                 return ""
