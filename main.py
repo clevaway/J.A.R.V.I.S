@@ -11,7 +11,7 @@ from modules.ollama_nlp import OllamaNLP
 from modules.introductions import run_introduction
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 # from modules.command_executor import CommandExecutor
 # from config.config import Config
@@ -43,7 +43,7 @@ def main():
     # Load configuration
     # config = Config()
     # run intro
-    run_introduction()
+    # run_introduction()
 
     while True:
         # Listen for user input
