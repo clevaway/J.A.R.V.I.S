@@ -1,0 +1,6 @@
+wikipedia~=1.4.0
+python-dotenv~=1.0.0
+speechrecognition~=3.10.1
+requests~=2.31.0
+moviepy~=1.0.3
+pywhatkit~=5.4

@@ -16,6 +16,7 @@ Jarvis is bing built with privacy in mind, everything runs locally. This fine-tu
 - [x] Jarvis can tell you the current date and time just ask:) `Try: What time is it?  what is the date of today?`
 - [x] Open your default browser and search for something `Try: hey jarvis, help me search for the best african dish out there`
 - [x] play youtube video by title `Try: hey jarvis, play Girls like you by Maroon 5 on youtube`
+- [x] You can ask jarvis what it sees(uses the webcam, only works in the project not the chat, you have to run the while project. NB: it uses llava(100% offline), so you have to download and install it with ollama command "`ollama run llava`" )  `Try:"what is this?"  "what are you looking at?", "tell me what you see", "describe this" or even "describe what you see"`
 - [ ] Search on wikipedia
 - [ ] Send emails from contacts
 
@@ -33,9 +34,13 @@ ollama run fotiecodes/jarvis
   ```
 
   This will install the model [jarvis](https://ollama.com/fotiecodes/jarvis) model locally.
-3. From here you can already chat with jarvis from the command line by running the command `ollama run jarvis` or `ollama run jarvis:latest` to run the lastest stable release.
+3. From here you can already chat with jarvis from the command line by running the same command `ollama run fotiecodes/jarvis` or `ollama run fotiecodes/jarvis:latest` to run the lastest stable release.
 
 II. After installing the model locally and started the ollama sever and can confirm it is working properly, clone this repositry and run the main.py file
+
+### 🚨 Important
+
+Please check the `.env.example` file and add the neccessary env variables before running.
 
 That's it, you can start talking to Jarvis✨
 
