@@ -33,9 +33,13 @@ ollama run fotiecodes/jarvis
   ```
 
   This will install the model [jarvis](https://ollama.com/fotiecodes/jarvis) model locally.
-3. From here you can already chat with jarvis from the command line by running the command `ollama run jarvis` or `ollama run jarvis:latest` to run the lastest stable release.
+3. From here you can already chat with jarvis from the command line by running the same command `ollama run fotiecodes/jarvis` or `ollama run fotiecodes/jarvis:latest` to run the lastest stable release.
 
 II. After installing the model locally and started the ollama sever and can confirm it is working properly, clone this repositry and run the main.py file
+
+### 🚨 Important
+
+Please check the `.env.example` file and add the neccessary env variables before running.
 
 That's it, you can start talking to Jarvis✨
 
