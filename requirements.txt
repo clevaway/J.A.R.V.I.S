@@ -4,5 +4,3 @@ speechrecognition~=3.10.1
 requests~=2.31.0
 moviepy~=1.0.3
 pywhatkit~=5.4
-pydub
-simpleaudio
