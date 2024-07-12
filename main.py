@@ -29,7 +29,6 @@ VISION_MODEL = os.getenv('VISION_MODEL')
 
 def main():
     # Initialize modules
-    # speech_to_text = SpeechToText()
     # text_to_speech = TextToSpeech()
     interlocus = Interlocus()
     
@@ -137,14 +136,14 @@ def main():
         if any(goodByeKeyword in user_input for goodByeKeyword in goodByeKeywords):
             print("Exiting...")
             good_bye_res = ollam_nlp.generate_text(
-                JARVIS_MODEL, user_input, "You always refer to me as Sir. in your response. This response should be in the context of you saying goodbye, and you do as instructed even if you don't want to.")
+                JARVIS_MODEL, user_input, "This response should be in the context of you saying goodbye, and you do as instructed even if you don't want to.")
             interlocus.speak(good_bye_res)
             break
 
         # general response
         # Process user input using NLP
         processed_input = ollam_nlp.generate_text(
-            JARVIS_MODEL, user_input, "You always refer to me as Sir. in your response.")
+            JARVIS_MODEL, user_input)
 
         # # Execute command based on processed input
         # response = command_executor.execute(processed_input)
