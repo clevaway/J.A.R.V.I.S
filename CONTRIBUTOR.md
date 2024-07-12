@@ -73,7 +73,7 @@ pip install -r llm/llama.cpp/requirements.txt
 > Note: some model architectures require using specific convert scripts. For example, Qwen models require running `convert-hf-to-gguf.py` instead of `convert.py`
 
 ```bash
-python llm/llama.cpp/convert.py ./model --outtype f16 --outfile converted.bin
+python llm/llama.cpp/convert.py ../jarvis-hf --outtype f16 --outfile converted.bin
 ```
 
 ### Quantize the model

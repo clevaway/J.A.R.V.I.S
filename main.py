@@ -5,8 +5,8 @@ from modules.vibranium.dateAndtime.time import CurrentTimeTeller
 import os
 import time
 import cv2
-from modules.speech_to_text import SpeechToText
-from modules.text_to_speech import TextToSpeech
+from modules.Interlocus import Interlocus
+# from modules.text_to_speech import TextToSpeech
 from modules.ollama_nlp import OllamaNLP
 from modules.introductions import run_introduction
 from dotenv import load_dotenv
@@ -29,8 +29,9 @@ VISION_MODEL = os.getenv('VISION_MODEL')
 
 def main():
     # Initialize modules
-    speech_to_text = SpeechToText()
-    text_to_speech = TextToSpeech()
+    # text_to_speech = TextToSpeech()
+    interlocus = Interlocus()
+    
     ollam_nlp = OllamaNLP()
 
     # init vibranium modules
@@ -47,7 +48,7 @@ def main():
 
     while True:
         # Listen for user input
-        user_input = speech_to_text.listen()
+        user_input = interlocus.listen()
 
         # Check if command is 'time'
         if 'time' in user_input:
@@ -55,7 +56,7 @@ def main():
             response = time_teller.tell_time()
             processed_results = ollam_nlp.generate_text(
                 JARVIS_MODEL, user_input, "For some context for you. it is " + response)
-            text_to_speech.speak(processed_results)
+            interlocus.speak(processed_results)
             continue
 
         keywords = ['date', 'today', 'month', 'year']
@@ -64,7 +65,7 @@ def main():
             response = date_teller.tell_date()
             processed_results = ollam_nlp.generate_text(
                 JARVIS_MODEL, user_input, "For some context for you. it is " + response)
-            text_to_speech.speak(processed_results)
+            interlocus.speak(processed_results)
             continue
         # if "wikipedia" in user_input:
         #     print("Wikipedia requested")
@@ -76,7 +77,7 @@ def main():
         #         # Split the second part by spaces and join the words starting from the second word
         #         search_keyword = ' '.join(parts_after_wikipedia[1].split()[1:])
         #         response = online_ops.search_wikipedia(search_keyword)
-        #         text_to_speech.speak(response)
+        #         interlocus.speak(response)
         #     continue
         # Check if command is 'search'
         if 'search' in user_input:
@@ -89,7 +90,7 @@ def main():
                 # Split the second part by spaces and join the words starting from the second word
                 search_keyword = ' '.join(parts_after_search[1].split()[1:])
                 online_ops.search_google(search_keyword)
-                text_to_speech.speak("Coming up sir. one sec")
+                interlocus.speak("Coming up sir. one sec")
             continue
         if 'play' in user_input:
             print("Youtube requested")
@@ -98,7 +99,7 @@ def main():
                 # Extract the video title
                 video = ' '.join(parts_after_youtube[1].split())
                 online_ops.play_on_youtube(video)
-                text_to_speech.speak("Playing on youtube.")
+                interlocus.speak("Playing on youtube.")
             continue
 
         visionKeywords = ['what do you see', 'what are you looking at', 'tell me what you see',
@@ -126,7 +127,7 @@ def main():
             cv2.imwrite(image_path, frame)
             print("Thinking...")
             description = vision.generate_description("llava", image_path)
-            text_to_speech.speak(description)
+            interlocus.speak(description)
             continue
 
         # Check if command is "go to sleep" or "goodbye", "sleep"
@@ -135,21 +136,21 @@ def main():
         if any(goodByeKeyword in user_input for goodByeKeyword in goodByeKeywords):
             print("Exiting...")
             good_bye_res = ollam_nlp.generate_text(
-                JARVIS_MODEL, user_input, "You always refer to me as Sir. in your response. This response should be in the context of you saying goodbye, and you do as instructed even if you don't want to.")
-            text_to_speech.speak(good_bye_res)
+                JARVIS_MODEL, user_input, "This response should be in the context of you saying goodbye, and you do as instructed even if you don't want to.")
+            interlocus.speak(good_bye_res)
             break
 
         # general response
         # Process user input using NLP
         processed_input = ollam_nlp.generate_text(
-            JARVIS_MODEL, user_input, "You always refer to me as Sir. in your response.")
+            JARVIS_MODEL, user_input)
 
         # # Execute command based on processed input
         # response = command_executor.execute(processed_input)
 
         # print(processed_input)
         # Convert response to speech
-        text_to_speech.speak(processed_input)
+        interlocus.speak(processed_input)
 
 
 if __name__ == "__main__":
