@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 ELEVENLABS_API_KEY = os.getenv('ELEVENLABS_API_KEY')
+ELEVENLABS_VOICE_ID = os.getenv('ELEVENLABS_VOICE_ID')
 
 class Interlocus:
     def __init__(self):
@@ -22,7 +23,7 @@ class Interlocus:
         audio = generate(
             api_key=ELEVENLABS_API_KEY,
             text=text,
-            voice="xFjhlCVIoEAjDeZpAmFe",
+            voice=ELEVENLABS_VOICE_ID,
             model="eleven_turbo_v2",
         )
         play(audio)
