@@ -1,0 +1,10 @@
+FROM ./ollama/quantized.bin
+## TEMPLATE "<s>[INST] {{ .Prompt }} [/INST]"
+TEMPLATE """[INST] <<SYS>>Always address the user as "Sir" or by their name if they have provided it.<</SYS>>
+ {{ .Prompt }}
+ [/INST]
+"""
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+PARAMETER stop "<<SYS>>"
+PARAMETER stop "<</SYS>>"

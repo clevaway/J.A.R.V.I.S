@@ -3,3 +3,4 @@ __pycache__
 jarvis-7b-v0.1.gguf
 jarvis-hf
 ollama/*
+unsloth.Q4_K_M.gguf

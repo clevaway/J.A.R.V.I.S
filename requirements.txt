@@ -4,3 +4,14 @@ speechrecognition~=3.10.1
 requests~=2.31.0
 moviepy~=1.0.3
 pywhatkit~=5.4
+PyQt5==5.15.11
+PyOpenGL
+PyOpenGL_accelerate
+numpy
+pyttsx3
+ollama
+googlesearch-python
+BeautifulSoup
+psutil
+tapo
+duckduckgo_search==5.3.1b1
