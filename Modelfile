@@ -1,10 +1,65 @@
-FROM ./ollama/quantized.bin
-## TEMPLATE "<s>[INST] {{ .Prompt }} [/INST]"
-TEMPLATE """[INST] <<SYS>>Always address the user as "Sir" or by their name if they have provided it.<</SYS>>
- {{ .Prompt }}
- [/INST]
+FROM ./unsloth.Q4_K_M.gguf
+
+TEMPLATE """
+<|im_start|>system
+You are a helpful assistant with access to the following functions. Use them if required - 
+{
+    "name": "order_pizza",
+    "description": "Order a pizza with custom toppings",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "size": {
+                "type": "string",
+                "description": "Size of the pizza (small, medium, large)"
+            },
+            "crust": {
+                "type": "string",
+                "description": "Type of crust (thin, regular, thick)"
+            },
+            "toppings": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "List of toppings for the pizza"
+            },
+            "delivery_address": {
+                "type": "string",
+                "description": "Address where the pizza should be delivered"
+            }
+        },
+        "required": [
+            "size",
+            "crust",
+            "toppings",
+            "delivery_address"
+        ]
+    }
+},
+{
+    'type': 'function',
+    'function': {
+        'name': 'get_current_weather',
+        'description': 'Get the current weather for a city',
+        'parameters': {
+            'type': 'object',
+            'properties': {
+                'city': {
+                    'type': 'string',
+                    'description': 'The name of the city',
+                },
+            },
+            'required': ['city'],
+        },
+    },
+}
+<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
 """
-PARAMETER stop "[INST]"
-PARAMETER stop "[/INST]"
-PARAMETER stop "<<SYS>>"
-PARAMETER stop "<</SYS>>"
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
+PARAMETER temperature 1.5
+PARAMETER min_p 0.1

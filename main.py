@@ -1,7 +1,4 @@
 from modules.vibranium.vision.vision import Vision
-from modules.vibranium.online_ops.index import OnlineOps
-from modules.vibranium.dateAndtime.date import CurrentDateTeller
-from modules.vibranium.dateAndtime.time import CurrentTimeTeller
 import os
 import time
 import cv2
@@ -35,9 +32,6 @@ def main():
     ollam_nlp = OllamaNLP()
 
     # init vibranium modules
-    time_teller = CurrentTimeTeller()
-    date_teller = CurrentDateTeller()
-    online_ops = OnlineOps()
     vision = Vision()
     # command_executor = CommandExecutor()
 
@@ -50,57 +44,6 @@ def main():
         # Listen for user input
         user_input = interlocus.listen()
 
-        # Check if command is 'time'
-        if 'time' in user_input:
-            print("Time requested")
-            response = time_teller.tell_time()
-            processed_results = ollam_nlp.generate_text(
-                JARVIS_MODEL, user_input, "For some context for you. it is " + response)
-            interlocus.speak(processed_results)
-            continue
-
-        keywords = ['date', 'today', 'month', 'year']
-        if any(keyword in user_input for keyword in keywords):
-            print("Date requested")
-            response = date_teller.tell_date()
-            processed_results = ollam_nlp.generate_text(
-                JARVIS_MODEL, user_input, "For some context for you. it is " + response)
-            interlocus.speak(processed_results)
-            continue
-        # if "wikipedia" in user_input:
-        #     print("Wikipedia requested")
-
-        #     # Split the user input by 'wikipedia'
-        #     parts_after_wikipedia = user_input.split('wikipedia', 1)
-
-        #     if len(parts_after_wikipedia) > 1:
-        #         # Split the second part by spaces and join the words starting from the second word
-        #         search_keyword = ' '.join(parts_after_wikipedia[1].split()[1:])
-        #         response = online_ops.search_wikipedia(search_keyword)
-        #         interlocus.speak(response)
-        #     continue
-        # Check if command is 'search'
-        if 'search' in user_input:
-            print("Search requested")
-
-            # Split the user input by 'search'
-            parts_after_search = user_input.split('search', 1)
-
-            if len(parts_after_search) > 1:
-                # Split the second part by spaces and join the words starting from the second word
-                search_keyword = ' '.join(parts_after_search[1].split()[1:])
-                online_ops.search_google(search_keyword)
-                interlocus.speak("Coming up sir. one sec")
-            continue
-        if 'play' in user_input:
-            print("Youtube requested")
-            parts_after_youtube = user_input.split('play', 1)
-            if len(parts_after_youtube) > 1:
-                # Extract the video title
-                video = ' '.join(parts_after_youtube[1].split())
-                online_ops.play_on_youtube(video)
-                interlocus.speak("Playing on youtube.")
-            continue
 
         visionKeywords = ['what do you see', 'what are you looking at', 'tell me what you see',
                           'look at this', 'describe this', 'describe what you see', 'describe']
@@ -136,7 +79,7 @@ def main():
         if any(goodByeKeyword in user_input for goodByeKeyword in goodByeKeywords):
             print("Exiting...")
             good_bye_res = ollam_nlp.generate_text(
-                JARVIS_MODEL, user_input, "This response should be in the context of you saying goodbye, and you do as instructed even if you don't want to.")
+                JARVIS_MODEL, user_input, "You have been asked to shutdown, say goodbye to the user.")
             interlocus.speak(good_bye_res)
             break
 
