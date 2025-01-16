@@ -7,6 +7,8 @@ from modules.Interlocus import Interlocus
 from modules.ollama_nlp import OllamaNLP
 from modules.introductions import run_introduction
 from dotenv import load_dotenv
+import asyncio
+
 
 load_dotenv(override=True)
 
@@ -70,7 +72,7 @@ def main():
             cv2.imwrite(image_path, frame)
             print("Thinking...")
             description = vision.generate_description("llava", image_path)
-            interlocus.speak(description)
+            asyncio.run(interlocus.speak(description))
             continue
 
         # Check if command is "go to sleep" or "goodbye", "sleep"
@@ -80,7 +82,7 @@ def main():
             print("Exiting...")
             good_bye_res = ollam_nlp.generate_text(
                 JARVIS_MODEL, user_input, "You have been asked to shutdown, say goodbye to the user.")
-            interlocus.speak(good_bye_res)
+            asyncio.run(interlocus.speak(good_bye_res))
             break
 
         # general response
@@ -93,7 +95,7 @@ def main():
 
         # print(processed_input)
         # Convert response to speech
-        interlocus.speak(processed_input)
+        asyncio.run(interlocus.speak(processed_input))
 
 
 if __name__ == "__main__":

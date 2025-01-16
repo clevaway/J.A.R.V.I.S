@@ -54,7 +54,7 @@ To-Do:
 - [x] Fine-tune llama2-7b for a costum model `Llama-2-7b-chat-jarvis"`(WIP)
 - [ ] Build a proper voice clone of jarvis(In progress): currently having difficulties finding clean voice samples of jarvis on the internet, so working with what i have, i guess won't be perfect.
 - [ ] Use Whisper for voice to text input(if anyone has anything better, please suggest as this is the best i found out there.)
-- [ ] Deploy the voice model as an API for everyone to be able to use it(We can deploy on my vps i don't know, if the specs will even let us though, we'll see)
+- [ ] Deploy the voice model as an API for everyone to be able to use it locally(We can deploy on my vps i don't know, if the specs will even let us though, we'll see)
 
 <!-- ## Converting model from hf to gguf file
 Command:
@@ -63,6 +63,19 @@ python llama.cpp/convert.py jarvis-hf \
   --outfile jarvis-7b-v0.1.gguf \
   --outtype q8_0
 ``` -->
+
+## Installing TTS for local processing
+
+for offline tts we use Kokoro, an amazing low latency tts
+Note: on Linux you need to run this as well: `apt-get install portaudio19-dev`
+In the root directory of the project, run the following command
+
+```bash
+wget https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx
+wget https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.json
+```
+
+Note: the voice name is already set in the .env file(the actual jarvis voice will be coming soon) this one is closest we have at the moment to jarvis's voice.
 
 ## Why Jarvis?
 
@@ -74,9 +87,11 @@ Special thanks to:
 
 - [ollama]([ollama](https://github.com/ollama/ollama)) for the amazing project
 - [ggerganov](https://github.com/ggerganov) the genius behind [llama.cpp](https://github.com/ggerganov/llama.cpp)
+- [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx) the tts that powers jarvis for offline inferencing
 - Every contributor to this repo:)
 
 ### Supporters ✨
+<https://github.com/thewh1teagle/kokoro-onnx/projects[>]
 
 - We're looking for Sponsors!
 
