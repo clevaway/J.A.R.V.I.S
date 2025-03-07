@@ -58,12 +58,12 @@ class Interlocus:
         q = queue.Queue()
         # Initialize VAD (voice activity detector)
         vad = webrtcvad.Vad()
-        # Silence and queue thresholds (in number of blocks)
-        silence_threshold = 16
-        q_threshold = 16
+        # Adjusted thresholds: increased silence threshold and queue threshold to capture full sentences
+        silence_threshold = 40    # increased from 24 (~1.2 sec of silence)
+        q_threshold = 40          # increased from 24
         silence_counter = 0
 
-        # Initialize the Whisper model (using a tiny English model as an example)
+        # Initialize the Whisper model (using a small English model as an example)
         model = Model("small.en",
                       print_realtime=False,
                       print_progress=False,
