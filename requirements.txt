@@ -18,3 +18,5 @@ duckduckgo_search==5.3.1b1
 mac-pyxa
 kokoro-onnx
 sounddevice
+pywhispercpp
+webrtcvad
