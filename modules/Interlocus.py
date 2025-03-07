@@ -15,7 +15,7 @@ KOKORO_VOICE = os.getenv('KOKORO_VOICE')
 
 class Interlocus:
     def __init__(self):
-        self.kokoro = Kokoro("kokoro-v0_19.onnx", "voices.json")
+        self.kokoro = Kokoro("kokoro-v0_19.onnx", "voices-v1.0.bin")
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
 
