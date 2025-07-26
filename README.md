@@ -11,6 +11,16 @@ We have use custom jarvis dataset and various other open datasets on the interne
 
 Jarvis is bing built with privacy in mind, everything runs locally. This fine-tuned model is better at responding like jarvis and producing response in the best jarvis tone possible.
 
+## Star History
+
+<a href="https://www.star-history.com/#clevaway/J.A.R.V.I.S&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=clevaway/J.A.R.V.I.S&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=clevaway/J.A.R.V.I.S&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=clevaway/J.A.R.V.I.S&type=Date" />
+ </picture>
+</a>
+
 ## Current features
 
 - [x] Jarvis can tell you the current date and time just ask:) `Try: What time is it?  what is the date of today?`
