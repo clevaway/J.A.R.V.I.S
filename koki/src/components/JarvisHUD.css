@@ -1,0 +1,20 @@
+/* JarvisHUD Component Styles */
+/* Most styling is handled by Tailwind classes and inline styles */
+/* This file is for any additional custom styling if needed */
+
+/* Fallback styles for when Tailwind is not available */
+@media (max-width: 640px) {
+  .jarvis-hud-container {
+    padding: 1rem;
+  }
+}
+
+/* Animation utilities for future use */
+@keyframes jarvis-pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+
+.jarvis-pulse {
+  animation: jarvis-pulse 2.2s ease-in-out infinite;
+}
