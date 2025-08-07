@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global styles for native app feel */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Prevent text cursor on text elements */
+body, div, span, p, h1, h2, h3, h4, h5, h6, text, tspan {
+  cursor: default;
+}
+
+/* Prevent context menu on right click */
+* {
+  -webkit-context-menu: none;
+}
+
+/* Custom utility class for native app elements */
+@layer utilities {
+  .native-app-element {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    -webkit-app-region: no-drag;
+  }
+  
+  .native-app-drag {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,6 +47,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* Prevent scrolling for more native feel */
 }
 
 code {

@@ -35,7 +35,16 @@ export default function JarvisHUD() {
   const dim = "#0AAFD1";
 
   return (
-    <div className="min-h-screen w-full bg-[#051824] flex items-center justify-center p-6">
+    <div 
+      className="min-h-screen w-full bg-[#051824] flex items-center justify-center p-6"
+      style={{
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        MozUserSelect: 'none',
+        msUserSelect: 'none',
+        cursor: 'default'
+      }}
+    >
       {/* Draggable area for window movement */}
       <DraggableArea />
       
@@ -148,7 +157,13 @@ export default function JarvisHUD() {
             fontSize="28"
             letterSpacing="6"
             fill="#CFF8FF"
-            style={{ filter: "url(#glow)" }}
+            style={{ 
+              filter: "url(#glow)",
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
             animate={{ opacity: [0.9, 0.65, 0.9] }}
             transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
           >
