@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import DraggableArea from "./DraggableArea";
 
 /**
  * JarvisHUD
@@ -35,6 +36,9 @@ export default function JarvisHUD() {
 
   return (
     <div className="min-h-screen w-full bg-[#051824] flex items-center justify-center p-6">
+      {/* Draggable area for window movement */}
+      <DraggableArea />
+      
       <div className="relative aspect-square w-[min(92vw,520px)]">
         {/* Soft outer glow */}
         <div className="absolute inset-0 rounded-full blur-3xl opacity-30" style={{

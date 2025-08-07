@@ -9,6 +9,9 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false, // Remove default window frame
+    transparent: false, // Keep opaque background
+    titleBarStyle: 'hidden', // Hide title bar
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
