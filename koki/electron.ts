@@ -9,9 +9,14 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false, // Remove default window frame
-    transparent: false, // Keep opaque background
+    minWidth: 600,           // Minimum width - prevents window from being too narrow
+    minHeight: 500,          // Minimum height - prevents window from being too short
+    maxWidth: 1200,          // Maximum width - prevents window from being too wide
+    maxHeight: 900,          // Maximum height - prevents window from being too tall
+    frame: false,            // Remove default window frame
+    transparent: false,      // Keep opaque background
     titleBarStyle: 'hidden', // Hide title bar
+    resizable: true,         // Allow resizing but within the min/max bounds
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

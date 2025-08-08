@@ -1,8 +1,8 @@
 import React from 'react';
-import JarvisHUD from './components/JarvisHUD';
+import { HUDContainer } from './components/HUDContainer';
 
 function App(): React.ReactElement {
-  return <JarvisHUD />;
+  return <HUDContainer />;
 }
 
 export default App;
