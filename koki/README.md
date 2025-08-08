@@ -4,6 +4,11 @@
 
 This is the **ui directory** for this Jarvis repository. Built with Electron and React using TypeScript for a modern, type-safe desktop application experience.
 
+## Preview
+(Not final, i am open to suggestions)
+
+<img width="1431" height="743" alt="image" src="https://github.com/user-attachments/assets/cc7965bc-60e5-455e-8df6-cd98b7d94551" />
+
 ## 🚀 Quick Start
 
 ### Prerequisites
