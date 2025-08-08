@@ -31,7 +31,7 @@ export default function JarvisHUD({ mode, volume = 0, size = 520, label = "J.A.R
   const pulseScale = 1 + Math.min(0.25, Math.max(0, Math.min(1, volume)) * 0.6);
 
   return (
-    <div className="relative aspect-square w-[min(60vw,520px)] select-none" style={{cursor:"default"}}>
+    <div className="relative aspect-square w-[min(70vw,520px)] select-none" style={{cursor:"default"}}>
       {/* Soft outer glow */}
       <div
         className="absolute inset-0 rounded-full blur-3xl opacity-30"

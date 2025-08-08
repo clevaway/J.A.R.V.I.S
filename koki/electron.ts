@@ -7,10 +7,10 @@ let mainWindow: BrowserWindow | null;
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 500,
     height: 600,
-    minWidth: 600,           // Minimum width - prevents window from being too narrow
-    minHeight: 500,          // Minimum height - prevents window from being too short
+    minWidth: 500,           // Minimum width - prevents window from being too narrow
+    minHeight: 600,          // Minimum height - prevents window from being too short
     maxWidth: 1200,          // Maximum width - prevents window from being too wide
     maxHeight: 900,          // Maximum height - prevents window from being too tall
     frame: false,            // Remove default window frame
