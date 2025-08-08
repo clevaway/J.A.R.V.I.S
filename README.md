@@ -30,6 +30,17 @@ Jarvis is bing built with privacy in mind, everything runs locally. This fine-tu
 - [ ] Search on wikipedia
 - [ ] Send emails from contacts
 
+## Project structure
+> **‼️Currently doing a major achitecture restructure(please check back later...)**
+> 
+| Directory | Description | Technology |
+|-----------|-------------|------------|
+| `/koki` | UI Codebase - JARVIS HUD interface & desktop app(wip) | React + TypeScript + Electron |
+| `/modules` | Backend functionality - NLP, voice processing, tools | Python |
+| `/dataset` | Training data and model preparation notebooks | Python + Parquet |
+| `/ollama` | Custom model integration and configurations | Go + Ollama |
+| Root | Main scripts, configuration, and entry points | Python |
+
 ### Usage
 
 #### Installation
