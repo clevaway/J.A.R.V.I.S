@@ -1,5 +1,5 @@
 # Jarvis (UI is coming...)
-...sneak peek at the ui(still in dev) [here](https://github.com/clevaway/J.A.R.V.I.S/tree/main/koki)
+...sneak peek at the ui(still in dev) [here](https://github.com/clevaway/J.A.R.V.I.S/tree/main/koki#preview)
 
 The J.A.R.V.I.S Large Language Model, 100% offline
 
