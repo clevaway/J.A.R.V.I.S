@@ -4,7 +4,8 @@ import speech_recognition as sr
 import pyttsx3
 
 import sounddevice as sd
-from kokoro_onnx import Kokoro
+# from kokoro_onnx import Kokoro
+from modules.JarvisLuxTTS.audio import StreamJarvisTTS
 import asyncio
 import time
 import queue
@@ -17,32 +18,34 @@ from pywhispercpp.model import Model
 
 load_dotenv(override=True)
 
-KOKORO_VOICE = os.getenv('KOKORO_VOICE')
 
 
 class Interlocus:
     def __init__(self):
-        self.kokoro = Kokoro("kokoro-v0_19.onnx", "voices-v1.0.bin")
+        # self.kokoro = Kokoro("kokoro-v0_19.onnx", "voices-v1.0.bin")
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
         self.input_device = None  # Added: use default input device
+        self.jarvis_tts = StreamJarvisTTS()
 
     async def speak(self, text):
         print(f"JARVIS: {text}")
-        
-        stream = self.kokoro.create_stream(
-            text,
-            voice=KOKORO_VOICE,
-            speed=1.0,
-            lang="en-us",
-        )
+        self.jarvis_tts.speak(text)
 
-        count = 0
-        async for samples, sample_rate in stream:
-            count += 1
-            print(f"Speaking ({count})...")
-            sd.play(samples, sample_rate)
-            sd.wait()
+        
+        # stream = self.kokoro.create_stream(
+        #     text,
+        #     voice=KOKORO_VOICE,
+        #     speed=1.0,
+        #     lang="en-us",
+        # )
+
+        # count = 0
+        # async for samples, sample_rate in stream:
+        #     count += 1
+        #     print(f"Speaking ({count})...")
+        #     sd.play(samples, sample_rate)
+        #     sd.wait()
 
     #  available models are: ['base', 'base-q5_1', 'base.en', 'base.en-q5_1', 'large-v1', 'large-v2', 'large-v2-q5_0', 'large-v3', 'large-v3-q5_0', 'large-v3-turbo', 'large-v3-turbo-q5_0', 'medium', 'medium-q5_0', 'medium.en', 'medium.en-q5_0', 'small', 'small-q5_1', 'small.en', 'small.en-q5_1', 'tiny', 'tiny-q5_1', 'tiny.en', 'tiny.en-q5_1', 'tiny.en-q8_0']
     # whisper_init_from_file_with_params_no_state: loading model from '/Users/username/Library/Application Support/pywhispercpp/models/ggml-base.bin'
