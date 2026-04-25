@@ -88,13 +88,12 @@ python llama.cpp/convert.py jarvis-hf \
 
 ## Installing TTS for local processing
 
-for offline tts we use Kokoro, an amazing low latency tts
-Note: on Linux you need to run this as well: `apt-get install portaudio19-dev`
-In the root directory of the project, run the following command
+for offline tts we switched from Kokoro to LuxTTS with custom module here [JarvisLuxTTS](https://github.com/codewithbro95/JarvisLuxTTS), an amazing low latency tts(still working on this)
+
+Note: after cloning the repo you need to type the following command to install all the necessary libries. this installs from the roor directory and sub directories
 
 ```bash
-wget https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx
-wget https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.json
+find . -name "requirements.txt" | while read req; do echo "Installing from $req..."; pip install -r "$req"; done
 ```
 
 Note: the voice name is already set in the .env file(the actual jarvis voice will be coming soon) this one is closest we have at the moment to jarvis's voice.

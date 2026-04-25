@@ -5,7 +5,6 @@ import cv2
 from modules.Interlocus import Interlocus
 # from modules.text_to_speech import TextToSpeech
 from modules.ollama_nlp import OllamaNLP
-from modules.introductions import run_introduction
 from dotenv import load_dotenv
 import asyncio
 

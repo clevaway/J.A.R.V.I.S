@@ -1,5 +1,6 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
+import { spawn } from 'child_process';
 
 const isDev = require('electron-is-dev');
 
@@ -8,9 +9,9 @@ let mainWindow: BrowserWindow | null;
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 500,
-    height: 600,
+    height: 750,
     minWidth: 500,           // Minimum width - prevents window from being too narrow
-    minHeight: 600,          // Minimum height - prevents window from being too short
+    minHeight: 750,          // Minimum height - prevents window from being too short
     maxWidth: 1200,          // Maximum width - prevents window from being too wide
     maxHeight: 900,          // Maximum height - prevents window from being too tall
     frame: false,            // Remove default window frame
@@ -20,6 +21,7 @@ function createWindow(): void {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      webSecurity: false,
     },
   });
 
@@ -28,6 +30,57 @@ function createWindow(): void {
     : `file://${path.join(__dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
+
+  // Get the absolute paths - go up two levels: one from dist/ to koki/, and one from koki/ to project root
+  const rootDir = path.join(__dirname, '..', '..');
+  const pythonScriptPath = path.join(rootDir, 'main.py');
+  console.log('Root directory:', rootDir);
+  console.log('Python script path:', pythonScriptPath);
+
+  // Spawn Python process with correct working directory
+  const pythonProcess = spawn('python', [pythonScriptPath], {
+    stdio: ['inherit', 'pipe', 'pipe'],
+    cwd: rootDir, // Set working directory to the root of the project
+    env: {
+      ...process.env,
+      PYTHONUNBUFFERED: '1' // This ensures Python output isn't buffered
+    }
+  });
+
+  // Forward Python logs to renderer
+  pythonProcess.stdout.on('data', (data) => {
+    const message = data.toString();
+    console.log('Python stdout:', message);
+    if (mainWindow) {
+      mainWindow.webContents.send('python-log', message);
+    }
+  });
+
+  pythonProcess.stderr.on('data', (data) => {
+    const message = data.toString();
+    console.error('Python stderr:', message);
+    if (mainWindow) {
+      mainWindow.webContents.send('python-error', message);
+    }
+  });
+
+  pythonProcess.on('error', (error) => {
+    console.error('Failed to start Python process:', error);
+  });
+
+  pythonProcess.on('exit', (code, signal) => {
+    console.log(`Python process exited with code ${code} and signal ${signal}`);
+    if (mainWindow) {
+      mainWindow.webContents.send('python-error', `Python process exited with code ${code}`);
+    }
+  });
+
+  // Send a test message to verify IPC is working
+  setTimeout(() => {
+    if (mainWindow) {
+      mainWindow.webContents.send('python-log', 'Test message from Electron');
+    }
+  }, 2000);
 
   mainWindow.on('closed', () => (mainWindow = null));
 }
